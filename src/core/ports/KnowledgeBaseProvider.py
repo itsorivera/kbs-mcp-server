@@ -1,9 +1,15 @@
 from abc import ABC, abstractmethod
 from typing import List
+from src.core.domain.models import KnowledgeBase
 
-class KBProvider(ABC):
+class KnowledgeBaseProvider(ABC):
+    @property
     @abstractmethod
-    async def list_knowledge_bases(self) -> List[str]:
+    def provider_type(self) -> str:
+        pass
+
+    @abstractmethod
+    async def list_knowledge_bases(self) -> List[KnowledgeBase]:
         pass
 
     @abstractmethod
