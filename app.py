@@ -1,8 +1,6 @@
-from mcp.server.fastmcp import FastMCP, Context
-import asyncio
+from mcp.server.fastmcp import FastMCP
 from typing import List
 from src.config.AppConfig import discovery_service
-from src.core.domain.models import KnowledgeBase
 
 
 mcp = FastMCP(
@@ -30,7 +28,8 @@ async def list_knowledge_bases(provider_filter: str = None) -> List[dict]:
     return [kb.__dict__ for kb in kbs]
 
 
+
 if __name__ == "__main__":
     mcp.run(
-        transport="stdio"
+        transport="streamable-http"
     )
